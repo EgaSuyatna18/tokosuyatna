@@ -106,11 +106,11 @@
                     <h1>
                       Toko <br>
                       <span>
-                        Yayat
+                        Suyatna
                       </span>
                     </h1>
                     <p>
-                      Menjual Paket Herbal Dengan Banyak Khasiat.
+                      Menjual Produk Herbal Dengan Banyak Khasiat.
                     </p>
                     <a href="#pesan">
                       Pesan
@@ -138,11 +138,11 @@
                     <h1>
                       Toko <br>
                       <span>
-                        Yayat
+                        Suyatna
                       </span>
                     </h1>
                     <p>
-                    Menjual Paket Herbal Dengan Banyak Khasiat.
+                    Menjual Produk Herbal Dengan Banyak Khasiat.
                     </p>
                     <a href="#pesan">
                       Pesan
@@ -183,7 +183,7 @@
     <div class="container">
       <div class="heading_container heading_center">
         <h2>
-          Pilihan <span>Paket</span>
+          Pilihan <span>Produk</span>
         </h2>
       </div>
       <div class="row">
@@ -423,38 +423,71 @@
             <div class="form-row ">
               <div class="form-group col-lg-4">
                 <label for="inputPatientName">Nama Pemesan </label>
-                <input type="text" name="nama" class="form-control" id="iNama" placeholder="">
+                <input type="text" class="form-control" id="iNama" placeholder="">
               </div>
-              <div class="form-group col-lg-4">
-                <label for="inputDoctorName">Jumlah Pemesanan </label>
-                <select name="jumlah" class="form-control wide" id="iJumlah">
-                  <option>1 box Rp. 150.000</option>
-                  <option>Paket Bronze 4 box Rp. 500.000</option>
-                </select>
-              </div>
-              <div class="form-group col-lg-4">
-                <label for="inputDepartmentName">Pilih Produk</label>
-                <select name="paket" class="form-control wide" id="iProduk">
-                  <option>Kopi</option>
-                  <option>Pil Hitam</option>
-                  <option>Susu</option>
-                  <option>Coklat</option>
-                  <option>Jus</option>
-                </select>
-              </div>
-            </div>
-            <div class="form-row ">
               <div class="form-group col-lg-4">
                 <label for="inputPhone">Nomer Telepon</label>
-                <input type="number" name="no" class="form-control" id="iNo" placeholder="XXXXXXXXXX">
-              </div>
-              <div class="form-group col-lg-4">
-                <label for="inputSymptoms">Catatan(Optional)</label>
-                <input type="text" name="catatan" class="form-control" id="iCatatan" placeholder="">
+                <input type="number" class="form-control" id="iNo" placeholder="">
               </div>
               <div class="form-group col-lg-4">
                 <label for="inputDate">Alamat </label>
-                <input type="text" name="alamat" class="form-control" id="iAlamat" placeholder="">
+                <input type="text" class="form-control" id="iAlamat" placeholder="">
+              </div>
+            </div>
+            <div class="form-row ">
+              <div class="form-group col-6">
+                <label for="inputDate">Nama Produk</label>
+                <input type="text" class="form-control" value="KOPI" id="iKopi" placeholder="" readonly>
+              </div>
+              <div class="form-group col-6">
+                <label for="inputDate">Jumlah </label>
+                <input type="number" class="form-control" id="ijKopi" placeholder="0" onchange="total()">
+              </div>
+            </div>
+            <div class="form-row ">
+              <div class="form-group col-6">
+                <label for="inputDate">Nama Produk</label>
+                <input type="text" class="form-control" value="PIL HITAM" id="iPil" placeholder="" readonly>
+              </div>
+              <div class="form-group col-6">
+                <label for="inputDate">Jumlah </label>
+                <input type="number" class="form-control" id="ijPil" placeholder="0" onchange="total()">
+              </div>
+            </div>
+            <div class="form-row ">
+              <div class="form-group col-6">
+                <label for="inputDate">Nama Produk</label>
+                <input type="text" class="form-control" value="HUBBI MILK" id="iSusu" placeholder="" readonly>
+              </div>
+              <div class="form-group col-6">
+                <label for="inputDate">Jumlah </label>
+                <input type="number" class="form-control" id="ijSusu" placeholder="0" onchange="total()">
+              </div>
+            </div>
+            <div class="form-row ">
+              <div class="form-group col-6">
+                <label for="inputDate">Nama Produk</label>
+                <input type="text" class="form-control" value="COKLAT RINDU" id="iCoklat" placeholder="" readonly>
+              </div>
+              <div class="form-group col-6">
+                <label for="inputDate">Jumlah </label>
+                <input type="number" class="form-control" id="ijCoklat" placeholder="0" onchange="total()">
+              </div>
+            </div>
+            <div class="form-row ">
+              <div class="form-group col-6">
+                <label for="inputDate">Nama Produk</label>
+                <input type="text" class="form-control" value="JUS KANGEN" id="iJus" placeholder="" readonly>
+              </div>
+              <div class="form-group col-6">
+                <label for="inputDate">Jumlah </label>
+                <input type="number" class="form-control" id="ijJus" placeholder="0" onchange="total()">
+              </div>
+            </div>
+            <div class="form-row ">
+              <div class="col-12 text-center">
+                <label>Total Harga</label>
+                <input type="text" class="form-control" id="iTotal" placeholder="" readonly>
               </div>
             </div>
             <div class="btn-box">
@@ -698,8 +731,58 @@
 
   <script>
     function setAction() {
-      let url = "https://api.whatsapp.com/send?phone=6281212181268&text=Nama%20Pemesan%3A%20"+iNama.value+"%0AJumlah%3A%20"+iJumlah.value+"%0AProduk%3A%20"+iProduk.value+"%0ANo%20Telepon%3A%20"+iNo.value+"%0ACatatan%3A%20"+iCatatan.value+"%0AAlamat%3A%20"+iAlamat.value
+      let url = "https://api.whatsapp.com/send?phone=6281212181268&text=Nama%20Pemesan%3A%20"+iNama.value+"%0ANo%20Telepon%3A%20"+iNo.value+"%0AAlamat%3A%20"+iAlamat.value+"%0A"+iKopi.value+"%3A%20"+ijKopi.value+"%0A"+iPil.value+"%3A%20"+ijPil.value+"%0A"+iSusu.value+"%3A%20"+ijSusu.value+"%0A"+iCoklat.value+"%3A%20"+ijCoklat.value+"%0A"+iJus.value+"%3A%20"+ijJus.value+"%0AKeterangan%3A%20"+iTotal.value
       window.open(url, "_blank");
+    }
+
+    function total() {
+      let m = '-';
+      let paket = 0;
+      let harga = 0;
+      let ijKopiValue = parseInt(ijKopi.value);
+      let ijPilValue = parseInt(ijPil.value);
+      let ijSusuValue = parseInt(ijSusu.value);
+      let ijCoklatValue = parseInt(ijCoklat.value);
+      let ijJusValue = parseInt(ijJus.value);
+
+      if(!isNaN(ijKopiValue)) {
+        paket += ijKopiValue;
+      }
+      if(!isNaN(ijPilValue)) {
+        paket += ijPilValue;
+      }
+      if(!isNaN(ijSusuValue)) {
+        paket += ijSusuValue;
+      }
+      if(!isNaN(ijCoklatValue)) {
+        paket += ijCoklatValue;
+      }
+      if(!isNaN(ijJusValue)) {
+        paket += ijJusValue;
+      }
+      
+
+      if(paket > 48) {
+        m = 'titanium';
+      }else if(paket > 16) {
+        m = 'gold';
+      }else if(paket > 8) {
+        m = 'silver';
+      }else if(paket > 4) {
+        m = 'bronze';
+      }
+
+      harga += Math.floor(paket / 48) * 6000000;
+      paket = paket % 48;
+      harga += Math.floor(paket / 16) * 2000000;
+      paket = paket % 16;
+      harga += Math.floor(paket / 8) * 1000000;
+      paket = paket % 8;
+      harga += Math.floor(paket / 4) * 500000;
+      paket = paket % 4;
+      harga += paket * 150000;
+
+      iTotal.value = "Total Harga = " + harga +" Membership = " + m;
     }
   </script>
 
